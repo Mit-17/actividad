@@ -83,11 +83,13 @@ function App() {
   };
 
   return (
+    // Este es el contenedor principal de la aplicación
     <div className="flex flex-col justify-center bg-blue-100 min-h-screen w-full">
       <div className="flex flex-col justify-center items-center bg-white/80 mx-4 md:mx-36 p-6 md:p-10 rounded-2xl shadow-lg">
         <h1 className="text-4xl md:text-5xl py-2 px-5 text-center font-extrabold text-blue-900 mb-6">
           Gestión de Actividades
-        </h1>
+        </h1> 
+        {/* Botones para filtrar actividades por estatus */}
         <div className="flex flex-row justify-center gap-4 mb-6">
           <button
             className="btn px-6 py-2 rounded-full font-semibold bg-blue-400 text-white shadow hover:bg-blue-600 transition"
@@ -108,6 +110,7 @@ function App() {
             Todas
           </button>
         </div>
+        {/* Mensaje de estado */}
         {mensaje && <div className="text-center text-red-500 mb-4 font-medium">{mensaje}</div>}
         <div className="w-full mb-8">
           {actividades.map((act) => (
@@ -115,6 +118,7 @@ function App() {
               className="flex justify-between items-center bg-blue-50 rounded-xl shadow p-4 mb-4"
               key={act.id}
             >
+              {/* Información de la actividad */}
               <div className="flex flex-col">
                 <span className="font-bold text-blue-900 text-lg">{act.actividad}</span>
                 <span className="text-gray-700 text-base">{act.descripcion}</span>
@@ -128,6 +132,7 @@ function App() {
                   {act.estatus === 1 ? 'Activo' : 'Inactivo'}
                 </span>
               </div>
+              {/* Botón para eliminar y actualizar estatus */}
               <div className="flex gap-2">
                 <button
                   className="p-2 rounded-full hover:bg-red-100 text-red-500 transition"
@@ -147,11 +152,14 @@ function App() {
             </div>
           ))}
         </div>
+        {/* Formulario para crear una nueva actividad */}
         <form
           className="flex flex-col gap-3 bg-blue-50 rounded-xl shadow p-6 w-full max-w-md"
           onSubmit={crearActividad}
         >
+          {/* Título del formulario */}
           <h2 className="text-blue-900 text-xl font-bold mb-2">Nueva Actividad</h2>
+          {/* Nombre de la actividad */}
           <input
             type="text"
             placeholder="Actividad"
@@ -160,6 +168,7 @@ function App() {
             onChange={e => setFormData({ ...formData, actividad: e.target.value })}
             required
           />
+          {/* Descripción de la actividad */}
           <input
             type="text"
             placeholder="Descripción"
@@ -168,6 +177,7 @@ function App() {
             onChange={e => setFormData({ ...formData, descripcion: e.target.value })}
             required
           />
+          {/* Selector de estatus */}
           <select
             className="px-4 py-2 rounded-lg border border-blue-200 focus:outline-none focus:border-blue-400 bg-white"
             value={formData.estatus}
@@ -176,6 +186,7 @@ function App() {
             <option value={1}>Activo</option>
             <option value={0}>Inactivo</option>
           </select>
+          {/* Botón para enviar el formulario */}
           <button
             className="flex items-center justify-center gap-2 px-6 py-2 rounded-full font-semibold bg-blue-500 text-white shadow hover:bg-blue-700 transition mt-2"
             type="submit"
