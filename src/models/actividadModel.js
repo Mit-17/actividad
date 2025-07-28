@@ -15,12 +15,17 @@ const Actividad = {
 
     create: (data, callback) => {
         db.query('INSERT INTO actividades (actividad, descripcion, estatus) VALUES (?, ?, ?)',
-        [data.actividad, data.descripcion, data.estatus], callback);
+            [data.actividad, data.descripcion, data.estatus], callback);
     },
 
+
+    // se modifico
     update: (id, data, callback) => {
-        db.query('UPDATE actividades SET actividad = ?, descripcion = ?, estatus = ? WHERE id = ?',
-        [data.actividad, data.descripcion, data.estatus], callback);
+        db.query(
+            'UPDATE actividades SET estatus = ? WHERE id = ?',
+            [data.estatus, id],
+            callback
+        );
     },
 
     delete: (id, callback) => {

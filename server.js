@@ -11,6 +11,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Rutas
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome !!!!" });
+});
 const usuarioRoutes = require('./src/routes/actividadRoutes');
 app.use('/api/actividades', usuarioRoutes);
 

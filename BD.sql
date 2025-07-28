@@ -31,7 +31,7 @@ CREATE TABLE `actividades` (
     `id` int(11) NOT NULL,
     `actividad` varchar(100) NOT NULL,
     `descripcion` varchar(100) NOT NULL,
-    `estatus` varchar(100) NOT NULL
+    `estatus` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
